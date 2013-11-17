@@ -8,6 +8,10 @@ from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.utils import OrderedDict
 from DateTime import DateTime
 
+import logging
+logger = logging.getLogger('tomcom.browsers.base')
+
+
 class BrowserView(BaseBrowserView):
 
     def get_context(self):
@@ -20,8 +24,8 @@ class BrowserView(BaseBrowserView):
 
     def getContext(self):
 
-        warnings.warn('BrowserView -> getContext is deprecated please use get_context',
-                      DeprecationWarning, 1)
+        logger.warning('BrowserView -> getContext is deprecated please use get_context')
+
         return self.get_context()
 
     def __call__(self):
